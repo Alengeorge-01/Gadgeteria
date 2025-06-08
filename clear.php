@@ -3,8 +3,9 @@ require_once('connect.php');
 session_start(); 
 if(isset($_SESSION['login']) && $_SESSION['login'] == true){ 
 
-	 $log = " DELETE FROM ".$_SESSION['uname']." ";
-     $log1 = mysqli_query($link,$log);  
+         $log = mysqli_prepare($link, "DELETE FROM cart WHERE username = ?");
+     mysqli_stmt_bind_param($log, "s", $_SESSION['uname']);
+     mysqli_stmt_execute($log);
      header('location:cart.php');
  }
 
@@ -12,3 +13,4 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
            header('location:login.php');
      }           
 ?>
+

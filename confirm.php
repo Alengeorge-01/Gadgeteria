@@ -210,12 +210,14 @@ echo "
 		      		?>
 		      			<?php
                             require_once('connect.php');
-		      				$log = 'select * from '.$_SESSION['uname'].' ';
-		      				$log1 = mysqli_query($link,$log); 
-                            if(mysqli_num_rows( $log1) > 0 ){
-                            while($row = mysqli_fetch_array($log1)) {
+                                                $stmt = mysqli_prepare($link, "select * from cart where username = ?");
+                                                mysqli_stmt_bind_param($stmt, "s", $_SESSION['uname']);
+                                                mysqli_stmt_execute($stmt);
+                                                $log1 = mysqli_stmt_get_result($stmt);
+                            $rows = mysqli_fetch_all($log1, MYSQLI_ASSOC);
+                            foreach($rows as $row) {
                             echo $row['product_id']." - ".$row['name']."<hr class='f4'><br>";
-                            }}
+                            }
 		      			
 		      	echo "
 		      		
@@ -226,12 +228,14 @@ echo "
 
 		      			<?php
                          
-		      				$log = ' select * from '.$_SESSION['uname'].' ';
-		      				$log1 = mysqli_query($link,$log); 
-                            if(mysqli_num_rows( $log1) > 0 ){
-                            while($row = mysqli_fetch_array($log1)) {
+                                                $stmt = mysqli_prepare($link, " select * from cart where username = ?");
+                                                mysqli_stmt_bind_param($stmt, "s", $_SESSION['uname']);
+                                                mysqli_stmt_execute($stmt);
+                                                $log1 = mysqli_stmt_get_result($stmt);
+                            $rows = mysqli_fetch_all($log1, MYSQLI_ASSOC);
+                            foreach($rows as $row) {
                             echo $row['quantity']."<hr class='f4'><br>" ;
-                            }}
+                            }
 		      		echo "
 		      			
 		      		</td>
@@ -240,16 +244,18 @@ echo "
 		      		";
 		      		?>
 		      			<?php
-		      				$sum=0;
-                            $log = 'select * from '.$_SESSION['uname'].' ';
-		      				$log1 = mysqli_query($link,$log); 
-                            if(mysqli_num_rows( $log1) > 0 ){
-                            while($row = mysqli_fetch_array($log1)) {
-        	                $amt=$row['price']*$row['quantity'];
+                                                $sum=0;
+                            $stmt = mysqli_prepare($link, "select * from cart where username = ?");
+                                                mysqli_stmt_bind_param($stmt, "s", $_SESSION['uname']);
+                                                mysqli_stmt_execute($stmt);
+                                                $log1 = mysqli_stmt_get_result($stmt);
+                            $rows = mysqli_fetch_all($log1, MYSQLI_ASSOC);
+                            foreach($rows as $row) {
+                                $amt=$row['price']*$row['quantity'];
                             echo "Rs.".$amt."<hr class='f4'><br>";
                             $sum=$sum+$amt;
 		      				
-                            }}
+                            }
 		      			echo "
 		      			
 		      		</td>
@@ -312,3 +318,4 @@ echo "
        }
            
 ?>
+

@@ -12,21 +12,19 @@ $pass1= stripslashes($pass2);
 
 $name = mysqli_real_escape_string($link,$name1);
 $pass = mysqli_real_escape_string($link,$pass1);
-$encp =  sha1($pass); 
 
+$stmt = mysqli_prepare($link, "SELECT password FROM register WHERE username = ?");
+mysqli_stmt_bind_param($stmt, "s", $name);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$row = mysqli_fetch_assoc($result);
 
-$log = " select * from register where username='$name' and password='$encp' ";
-$log1 = mysqli_query($link,$log); 
-
-if( mysqli_fetch_assoc($log1)){ 
+if($row && password_verify($pass, $row['password'])){
     if(isset($_REQUEST['rem'])){
         setcookie("username", $name , time()+60*60*24 , '/' , 'localhost');
     }
     $_SESSION['login'] = true;
     $_SESSION['uname']=$name;
-
-    $query3 = "CREATE TABLE IF NOT EXISTS " . $_SESSION['uname'] . "( product_id VARCHAR(100) NOT NULL , name VARCHAR(100) NOT NULL , price INT(100) NOT NULL , quantity INT(100) NOT NULL , PRIMARY KEY (product_id)) ENGINE = InnoDB";
-    $result3 = mysqli_query($link,$query3); 
 
     echo "
             <script>
