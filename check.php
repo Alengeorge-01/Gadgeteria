@@ -31,13 +31,13 @@ if( mysqli_fetch_assoc($log1)){
     echo "
             <script>
             window.location='index.php';
-            alert('Login Successfull');
+            alert('Login Successful');
             </script>";
 }
             
 else{
     echo "<script>
-             alert('Login Unsuccessfull');
+             alert('Login Unsuccessful');
             window.location='login.php';
             </script>";
 }
