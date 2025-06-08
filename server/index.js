@@ -12,16 +12,15 @@ let {
 let Passwordless = require("supertokens-node/recipe/passwordless");
 let { mailTransporter, getEmailBody } = require("./mailer");
 require("dotenv").config();
-const APP_NAME = "demo-App"; // TODO: Your app name
-const apiPort = 3000;
+const APP_NAME = process.env.APP_NAME || "demo-App";
+const apiPort = process.env.PORT || 3000;
 
 supertokens.init({
   framework: "express",
   supertokens: {
-    // These are the connection details of the app you created on supertokens.com
-    connectionURI:
-      "https://0eafca21b57711ec98ed89cb2be9b480-ap-southeast-1.aws.supertokens.io:3573",
-    apiKey: "A6yXKiQw2aY8obewjsFrReGuPhRrgU",
+    // connection details for your supertokens core
+    connectionURI: process.env.SUPERTOKENS_CONNECTION_URI,
+    apiKey: process.env.SUPERTOKENS_API_KEY,
   },
   appInfo: {
     // learn more about this on https://supertokens.com/docs/session/appinfo
