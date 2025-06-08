@@ -10,8 +10,10 @@ A demo e-commerce project combining a PHP front-end with a Node.js backend for a
 ## Setup
 
 1. Copy `.env.example` to `.env` and provide the necessary credentials.
-2. Install Node dependencies with `npm install`.
-3. Start the backend server using `npm start`.
+2. Copy `php/.env.example` to `php/.env` and add your database credentials.
+3. Run `composer install` to install PHP dependencies.
+4. Install Node dependencies with `npm install`.
+5. Start the backend server using `npm start`.
 
 ## Testing
 
