@@ -6,6 +6,10 @@
     "start": "node server/index.js",
     "test": "jest"
   },
+  "dependencies": {
+    "express-rate-limit": "^6.7.0",
+    "helmet": "^7.0.0"
+  },
   "devDependencies": {
     "jest": "^29.6.4",
     "supertest": "^6.3.4"

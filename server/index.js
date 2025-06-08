@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
 let supertokens = require("supertokens-node");
 let Session = require("supertokens-node/recipe/session");
 let {
@@ -56,6 +58,15 @@ supertokens.init({
 });
 
 const app = express();
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
+
+// security middlewares
+app.use(helmet());
+app.use(limiter);
 
 // ...other middlewares
 app.use(

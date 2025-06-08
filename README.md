@@ -11,7 +11,8 @@ A demo e-commerce project combining a PHP front-end with a Node.js backend for a
 
 1. Copy `.env.example` to `.env` and provide the necessary credentials.
 2. Install Node dependencies with `npm install`.
-3. Start the backend server using `npm start`.
+3. The backend now uses `helmet` and `express-rate-limit` for basic security.
+4. Start the backend server using `npm start`.
 
 ## Testing
 
