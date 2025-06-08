@@ -25,7 +25,7 @@ if( mysqli_fetch_assoc($log1)){
     $_SESSION['login'] = true;
     $_SESSION['uname']=$name;
 
-    $query3 = "CREATE TABLE ".$_SESSION['uname']."( product_id VARCHAR(100) NOT NULL , name VARCHAR(100) NOT NULL , price INT(100) NOT NULL , quantity INT(100) NOT NULL , PRIMARY KEY (product_id)) ENGINE = InnoDB";
+    $query3 = "CREATE TABLE IF NOT EXISTS " . $_SESSION['uname'] . "( product_id VARCHAR(100) NOT NULL , name VARCHAR(100) NOT NULL , price INT(100) NOT NULL , quantity INT(100) NOT NULL , PRIMARY KEY (product_id)) ENGINE = InnoDB";
     $result3 = mysqli_query($link,$query3); 
 
     echo "
