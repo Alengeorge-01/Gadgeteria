@@ -1,14 +1,14 @@
 <?php
    session_start(); 
-    if(isset($_SESSION['login']) && $_SESSION['login'] == true){     
+   if(isset($_SESSION['login']) && $_SESSION['login'] == true){ 
                echo "<!DOCTYPE html>
                 <html>
                 <head>
-                    <title>Televisions</title>
+                    <title>Watches</title>
                     <meta charset='utf-8'>
                     <meta name='viewport' content='width=device-width, initial-scale=1'>
                     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-                    <link rel='stylesheet' type='text/css' href='main.css'>
+                    <link rel='stylesheet' type='text/css' href='../public/main.css'>
                     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css' integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
                     <link href='https://fonts.googleapis.com/css?family=Cinzel:700' rel='stylesheet'>
                     <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js' type='text/javascript' async></script>
@@ -24,7 +24,7 @@
                                     <span class='icon-bar'></span>
                                     <span class='icon-bar'></span>                        
                                   </button>
-                                  <img class='navhead' src='geek.webp' width='50' height='50'>
+                                  <img class='navhead' src='../public/geek.webp' width='50' height='50'>
                                   <a class='navbar-brand' href='index.php'>G@dgeteri@</a>
                                 </div>
                                 <center>
@@ -65,15 +65,15 @@
                                 <div class='thumbnail'>";
                                         require_once('connect.php');
                                         $n1=$_REQUEST['n1'];
-                                        $log = " select * from television where product_id ='$n1'";
+                                        $log = " select * from watch where product_id ='$n1'";
                                         $log1 = mysqli_query($link,$log); 
                                         if(mysqli_num_rows( $log1) > 0 ){
                                             while($row = mysqli_fetch_array($log1)) {
                                                 echo "<img class='img-responsive' src='".$row['image']."'>";
-                                                echo "<div class='caption'>
+                                               echo "<div class='caption'>
                                                     <h2 class='pull-right'>Rs. ".$row['price']."</h2>
-                                                    <h2><a>".$row['tname']." - ".$row['product_id']."</a></h2><br>
-                                                     <form action='tvcart.php?n1=".$row['product_id']."' method='POST'>
+                                                    <h2><a>".$row['wname']." - ".$row['product_id']."</a></h2><br>
+                                                     <form action='watcart.php?n1=".$row['product_id']."' method='POST'>
                                                         <h4>Quantity</h4>
                                                         <p><button class='btn btn-primary pull-right' style='float:left;'>Add to Cart</button></p>
                                                          <div class='quan'><select class='quan' name='quantity' required>
@@ -96,13 +96,10 @@
                 </div>  
     </body>
 </html>";
-
-
            }
            else{
                header('location:login.php');
            }
 ?>
-
 
 

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
                 <html>
                 <head>
-                    <title>Password Change</title>
+                    <title>Login</title>
                     <meta charset='utf-8'>
                     <meta name='viewport' content='width=device-width, initial-scale=1'>
                     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-                    <link rel='stylesheet' type='text/css' href='main.css'>
+                    <link rel='stylesheet' type='text/css' href='../public/main.css'>
                     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css' integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
                     <link href='https://fonts.googleapis.com/css?family=Cinzel:700' rel='stylesheet'>
                     <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js' type='text/javascript' async></script>
@@ -22,7 +22,7 @@
                             <span class="icon-bar"></span>                        
                           </button>
                           <img class="navhead" src="geek.webp" width="50" height="50">
-                          <a class="navbar-brand" href="index.php">G@dgeteri@</a>
+                          <a class="navbar-brand" href="adminmenu.php">G@dgeteri@</a>
                         </div>
                         <center>
                             <div class="collapse navbar-collapse" id="myNavbar">
@@ -33,51 +33,34 @@
                                     <li><a href="tv.php"><i class="fas fa-tv"></i> Televisions</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                      <?php
-                                      session_start();
-                                    $_SESSION['uname'];
-                                      if(isset($_SESSION['uname'])){
-                                        echo "<a href='pass.php'><span class='glyphicon glyphicon-user'></span>";
-                                        echo $_SESSION['uname']; 
-                                        echo "</a></li>
-                                        <li><a href='cart.php'><span class='glyphicon glyphicon-shopping-cart'></span> Cart</a></li>
-                                        <li><a href='logout.php'><span class='glyphicon glyphicon-log-in'></span> Logout</a></li>";
-                                    }
-                                     else{
-                                        echo "<a href='signup.php'><span class='glyphicon glyphicon-user'></span>Sign Up</a></li>
-                                        <li><a href='login.php'><span class='glyphicon glyphicon-log-in'></span>";
-                                        echo "Login";
-                                        echo "</li>";
-                                    } 
-                                    ?>
+                                    <li><a href="admin.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                                 </ul>
                             </div>
                         </center>
                     </div>
                 </nav>
-           <div id="particles-js">
+            <div id="particles-js">
                 <div  style="width: 40%; position: absolute; top:20vh; left: 30vw;">
-          
-          <form action="chpass.php" method="POST">
-            <center><h2 class="h22">Password Change Form</h2></center><br>  
-            <div class="form-group">
-              <label for="Username"> Username </label>
-              <input type="text" class="form-control" id="Username" placeholder="Username" name="uname2">
+                <form action="admincheck.php" method="POST">
+                    <center><h2 class="h22">Admin Login</h2></center>
+                    <div class="form-group">
+                        <label for="Username"> Username</label>
+                        <input type="text" class="form-control" id="Username" placeholder="Username" name="uname1">
+                    </div>
+                    <div class="form-group">
+                        <label  for="Password">Password</label>
+                        <input type="password" class="form-control" id="Password" placeholder="Password" name="pass1">
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" class="remember_me" id="remember b" name="rem">
+                        <label  for="remember">Remember Me</label>
+                        <a href="pass.php" style="float: right;"><label  for="remember">Forgot your password ?</label></a>
+                    </div>
+                    <center><input type='submit' value=" Submit " class="btn btn-primary" id="bt"></center><br>
+                </form>
             </div>
-            <div class="form-group">
-              <label for="email"> Email Address </label>
-              <input type="email" class="form-control" id="email" placeholder="Email" name="email2">
             </div>
-            <div class="form-group">
-              <label  for="Password">New Password</label>
-              <input type="password" class="form-control" id="Password" placeholder="Password" name="pass2">
-            </div>
-            <center><input type='submit' value=" Submit " class="btn btn-primary" id="bt"></center>
-          </form>
-        </div>
-        </div>
                 <script src="particles.js"></script>
                 <script src="app.js"></script>
-</body>
+    </body>
 </html>

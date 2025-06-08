@@ -13,6 +13,12 @@ A demo e-commerce project combining a PHP front-end with a Node.js backend for a
 2. Install Node dependencies with `npm install`.
 3. Start the backend server using `npm start`.
 
+## Project structure
+
+- `php/` contains all PHP application files.
+- `public/` holds static assets such as images, CSS and browser JavaScript.
+- `server/` contains the Node.js backend.
+
 ## Testing
 
 Run `npm test` to execute the Jest test suite.

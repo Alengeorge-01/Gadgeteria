@@ -4,12 +4,12 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                echo "<!DOCTYPE html>
                 <html>
                 <head>
-                    <title>Watches</title>
+                    <title>Laptops</title>
                     <meta charset='utf-8'>
                     <meta name='viewport' content='width=device-width, initial-scale=1'>
                     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-                    <link rel='stylesheet' type='text/css' href='animate.css'>
-                    <link rel='stylesheet' type='text/css' href='main.css'>
+                    <link rel='stylesheet' type='text/css' href='../public/animate.css'>
+                    <link rel='stylesheet' type='text/css' href='../public/main.css'>
                     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css' integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
                     <link href='https://fonts.googleapis.com/css?family=Cinzel:700' rel='stylesheet'>
                     <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js' type='text/javascript' async></script>
@@ -25,7 +25,7 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                                     <span class='icon-bar'></span>
                                     <span class='icon-bar'></span>                        
                                   </button>
-                                  <img class='navhead' src='geek.webp' width='50' height='50'>
+                                  <img class='navhead' src='../public/geek.webp' width='50' height='50'>
                                   <a class='navbar-brand' href='index.php'>G@dgeteri@</a>
                                 </div>
                                 <center>
@@ -68,29 +68,28 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
 
                                 <div class='carousel-inner'>
                                     <div class='item active'>
-                                        <img src='wat1.jpg' alt='Rolex'>
+                                        <img src='../public/apple.png' alt='Macbook Pro'>
                                         <div class='carousel-caption'>
-                                            <h2 class='animated bounceInDown'>Rolex</h2>
-                                            <p class='animated bounceInDown'>Rolex is world-famous for its performance and reliability. Discover Rolex luxury watches on the Official Rolex Website.</p>
+                                            <h2 class='animated bounceInDown'>Macbook Pro</h2>
+                                            <p class='animated bounceInDown'>The ultimate pro notebook, MacBook Pro features faster processors, upgraded memory, the Apple T2 chip, and a Retina display with True Tone technology.</p>
                                         </div>
                                     </div>
                                     <div class='item'>
-                                        <img src='wat2.jpg' alt='Fossil'>
+                                        <img src='../public/lap1.jpg' alt='Asus ROG'>
                                         <div class='carousel-caption'>
-                                            <h2 class='animated rotateInDownLeft'>Fossil</h2>
-                                            <p class='animated rotateInDownLeft'>Shop our latest men's and women's collections of Fossil watches, and find the mechanical, traditional or smart watches that suit your style.</p>
+                                            <h2 class='animated rotateInDownLeft'>Asus ROG</h2>
+                                            <p class='animated rotateInDownLeft'>World's 1st 144Hz, G2G 3ms, Narrow bezel 7.7 Gaming laptop. Anti-Dust Cooling. Ultra-thin Intel i7 8th generation gaming laptop with NVIDIA GTX 1080</p>
                                         </div>
                                     </div>
 
                                     <div class='item'>
-                                        <img src='watch.jpg' alt='Apple iWatch Series 4'>
+                                        <img src='../public/lap2.jpg' alt='Hp Spectre'>
                                         <div class='carousel-caption'>
-                                            <h2 class='animated flipInY'>Apple iWatch Series 4</h2>
-                                            <p class='animated flipInY'>Apple Watch Series 4 features its largest display yet, a re-engineered digital crown and cellular to make calls.</p>
+                                            <h2 class='animated flipInY'>Hp Spectre</h2>
+                                            <p class='animated flipInY'>Shop for HP Spectre x360 laptop here. Powerful, lightweight and stylish, featuring four operation modes with 360 degree hinge, and Windows Ink for creative </p>
                                         </div>
                                     </div>
                                 </div>
-
                                 <a class='left carousel-control' href='#myCarousel' data-slide='prev'>
                                     <span class='glyphicon glyphicon-chevron-left'></span>
                                     <span class='sr-only'>Previous</span>
@@ -103,8 +102,9 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                         </div>
                         <div class='periscope'>
                             <div class='container-fluid'>";
+                               
                                     require_once('connect.php');
-                                    $query1= 'select * from watch';          
+                                    $query1= 'select * from laptop';          
                                     $result1 = mysqli_query($link,$query1);
                                     echo "<br><div class='row text-center' style='display:flex ; flex-wrap:wrap'>";
                                     if(mysqli_num_rows( $result1) > 0 ){                                    
@@ -113,21 +113,19 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                                             echo "<div class='thumbnail'>";
                                             echo "<img src=".$row['image'].">";
                                             echo "<div class='caption'>";
-                                            echo "<h4>".$row['wname']." - ".$row['product_id']."</h4>";
-                                            echo "</div><p><a href='watproduct.php?n1=".$row['product_id']."' class='btn btn-primary'>More Info</a></p></div></div>";
+                                            echo "<h4>".$row['lname']." - ".$row['product_id']."</h4>";
+                                            echo "</div><p><a href='lapproduct.php?n1=".$row['product_id']."' class='btn btn-primary'>More Info</a></p></div></div>";
                                         }
                                     }  
                                     echo "</div>                                  
                             </div>
                         </div>
-                        <script type='text/javascript' src='nav.js'></script>
+                        <script type='text/javascript' src='../public/nav.js'></script>
                 </body>
             </html>";
            }
            else{
                header('location:login.php');
            }
-
-
 ?>
 

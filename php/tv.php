@@ -8,8 +8,8 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                     <meta charset='utf-8'>
                     <meta name='viewport' content='width=device-width, initial-scale=1'>
                     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-                    <link rel='stylesheet' type='text/css' href='animate.css'>
-                    <link rel='stylesheet' type='text/css' href='main.css'>
+                    <link rel='stylesheet' type='text/css' href='../public/animate.css'>
+                    <link rel='stylesheet' type='text/css' href='../public/main.css'>
                     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css' integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
                     <link href='https://fonts.googleapis.com/css?family=Cinzel:700' rel='stylesheet'>
                     <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js' type='text/javascript' async></script>
@@ -25,7 +25,7 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                                     <span class='icon-bar'></span>
                                     <span class='icon-bar'></span>                        
                                   </button>
-                                  <img class='navhead' src='geek.webp' width='50' height='50'>
+                                  <img class='navhead' src='../public/geek.webp' width='50' height='50'>
                                   <a class='navbar-brand' href='index.php'>G@dgeteri@</a>
                                 </div>
                                 <center>
@@ -69,14 +69,14 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
 
                                 <div class='carousel-inner'>
                                     <div class='item active'>
-                                        <img src='sony.jpg' alt='Sony Bravia OLED TV'>
+                                        <img src='../public/sony.jpg' alt='Sony Bravia OLED TV'>
                                         <div class='carousel-caption'>
                                             <h2 class='animated bounceInDown'>Sony Bravia 4K </h2>
                                             <p class='animated bounceInDown'>Discover a world of seamless usability through the Sony Bravia 4K Ultra HD TVs, movies and music with seamless usability through Sony's Android TV.</p>
                                         </div>
                                     </div>
                                     <div class='item'>
-                                        <img src='tv.jpg' alt='Mi Pro Tv'>
+                                        <img src='../public/tv.jpg' alt='Mi Pro Tv'>
                                         <div class='carousel-caption'>
                                             <h2 class='animated rotateInDownLeft'>Mi 4A PRO </h2>
                                             <p class='animated rotateInDownLeft'>Mi LED TV 4A PRO (49) - Check out the features: Ultra-bright LED display ,Powerful 20W stereo speakers ,64-bit quad-core processor </p>
@@ -84,7 +84,7 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                                     </div>
 
                                     <div class='item'>
-                                        <img src='tv1.jpg' alt='LG Wallpaper Tv'>
+                                        <img src='../public/tv1.jpg' alt='LG Wallpaper Tv'>
                                         <div class='carousel-caption'>
                                             <h2 class='animated flipInY'>LG Wallpaper Tv</h2>
                                             <p class='animated flipInY'>Bring complete 4K Cinema HDR and Dolby Vision HDR cinematic experience at your home with all new LG AI ThinQ OLED TVs</p>
@@ -122,7 +122,7 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                                     echo "</div>                                  
                             </div>
                         </div>
-                        <script type='text/javascript' src='nav.js'></script>
+                        <script type='text/javascript' src='../public/nav.js'></script>
                 </body>
             </html>";
 
