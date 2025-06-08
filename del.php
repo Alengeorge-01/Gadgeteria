@@ -1,55 +1,56 @@
 <?php
 	require_once('connect.php');
-	$table=$_REQUEST['tablename'];	
-	$productid=$_REQUEST['productid'];	
-	
+        $table=$_REQUEST['tablename'];
+        $productid=$_REQUEST['productid'];
 
-
-	
-	$query1 = "select * from $table where product_id='$productid'";
-	$dup1=mysqli_query($link,$query1);
-		if( mysqli_num_rows($dup1)==0)  { 
-		    echo "<script> 
+        if(in_array($table, ['mobile','laptop','watch','television'])){
+        $stmt = mysqli_prepare($link, "select * from $table where product_id = ?");
+        mysqli_stmt_bind_param($stmt, "s", $productid);
+        mysqli_stmt_execute($stmt);
+        $dup1 = mysqli_stmt_get_result($stmt);
+                if( mysqli_num_rows($dup1)==0)  {
+                    echo "<script>
                 alert('Product ID doesnt exists');
                 window.location='delete.php';
-                </script>";  
-		}  
-	    else { 
+                </script>";
+                }
+            else {
+            $del = mysqli_prepare($link, " delete from $table where product_id=?");
+            mysqli_stmt_bind_param($del, "s", $productid);
+            mysqli_stmt_execute($del);
             if($table=='mobile'){
-		        $query = " delete from $table where product_id='$productid'";
-				$result = mysqli_query($link,$query);
                 echo "<script>
-                	window.location='mobile.php';
+                        window.location='mobile.php';
                 </script>";
             }
             else if($table=='laptop'){
-		        $query = " delete from $table where product_id='$productid'";
-				$result = mysqli_query($link,$query);
                 echo "<script>
-                	window.location='laptop.php';
+                        window.location='laptop.php';
                 </script>";
             }
             else if($table=='watch'){
-		        $query = " delete from $table where product_id='$productid'";
-				$result = mysqli_query($link,$query);
                 echo "<script>
-                	window.location='watch.php';
+                        window.location='watch.php';
                 </script>";
             }
             else if($table=='television'){
-		        $query = " delete from $table where product_id='$productid'";
-				$result = mysqli_query($link,$query);
                 echo "<script>
-                	window.location='tv.php';
+                        window.location='tv.php';
                 </script>";
             }
             else{
                 echo "<script>
                         alert('No Table Exists');
-                		window.location='delete.php';
+                                window.location='delete.php';
                     </script>";
                 }
             }
+        } else {
+            echo "<script>
+                    alert('No Table Exists');
+                            window.location='delete.php';
+                </script>";
+        }
 ?>
 
 

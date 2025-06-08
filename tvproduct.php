@@ -64,11 +64,13 @@
                             <div class='col-md-9' style='margin: 0 10%;'>
                                 <div class='thumbnail'>";
                                         require_once('connect.php');
-                                        $n1=$_REQUEST['n1'];
-                                        $log = " select * from television where product_id ='$n1'";
-                                        $log1 = mysqli_query($link,$log); 
+                                        $n1=$_REQUEST["n1"];
+                                        $stmt = mysqli_prepare($link, " select * from television where product_id = ?");
+                                        mysqli_stmt_bind_param($stmt, "s", $n1);
+                                        mysqli_stmt_execute($stmt);
+                                        $log1 = mysqli_stmt_get_result($stmt);
                                         if(mysqli_num_rows( $log1) > 0 ){
-                                            while($row = mysqli_fetch_array($log1)) {
+                                            while($row = mysqli_fetch_assoc($log1)) {
                                                 echo "<img class='img-responsive' src='".$row['image']."'>";
                                                 echo "<div class='caption'>
                                                     <h2 class='pull-right'>Rs. ".$row['price']."</h2>
