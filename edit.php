@@ -58,7 +58,7 @@
                         </nav>
                        <div id='particles-js'>
                             <div  style='width: 40%; position: absolute; top:15vh; left: 30vw;''>
-                                <form action='ins.php' method='POST'>
+                                <form action='ed.php' method='POST'>
                                 <h2 style='text-align:center'>Edit a New Table Row :</h2><br>
                                     <div class='form-group'>
                                         <input class='form-control' type='text' name='tablename' placeholder='Table Name'>

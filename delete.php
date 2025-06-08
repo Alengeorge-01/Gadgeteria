@@ -59,7 +59,7 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                         </nav>
                         <div id='particles-js'>
                             <div  style='width: 40%; position: absolute; top:20vh; left: 30vw;''>
-                                <form action='ins.php' method='POST'>
+                                <form action='del.php' method='POST'>
                                 <h2 style='text-align:center'>Delete a Table Row :</h2><br><br>
                                     <div class='form-group'>
                                         <input class='form-control' type='text' name='tablename' placeholder='Table Name'>
