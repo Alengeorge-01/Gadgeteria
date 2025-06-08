@@ -32,5 +32,5 @@ php/              # PHP environment configuration (.env)
 
 ## Testing
 
-1. Make sure Node dependencies are installed (`npm install`).
+1. Install Node dependencies with `npm install` if you haven't already. The tests rely on the packages defined in `package.json`.
 2. Run `npm test` to execute the Jest test suite located at `backend/index.test.js`.
