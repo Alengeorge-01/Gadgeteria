@@ -17,4 +17,5 @@ A demo e-commerce project combining a PHP front-end with a Node.js backend for a
 
 ## Testing
 
-Run `npm test` to execute the Jest test suite.
+1. Install dependencies by running `npm install`.
+2. Execute the test suite with `npm test`. This runs Jest and picks up the file `server/index.test.js`.
