@@ -5,10 +5,10 @@
 	$mail= $_REQUEST["email2"];
 	 $enpwd =  sha1( $newpwd );
 	 $query = "select * from register where username = '$name' and email='$mail'"; 
-	 $result = mysqli_query( $link, $query) or die(mysql_error());
+        $result = mysqli_query( $link, $query ) or die( mysqli_error($link) );
 	 if(mysqli_num_rows($result) == 1){ 
 	  	$update = " update register set password = '$enpwd' WHERE username = '$name'";
-	  	mysqli_query( $link, $update ) or die(mysql_error()); 
+               mysqli_query( $link, $update ) or die( mysqli_error($link) );
         echo "
             <script>
                 window.location='index.php';
