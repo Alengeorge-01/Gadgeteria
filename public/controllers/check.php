@@ -3,30 +3,25 @@
 session_start();
 require_once('connect.php');
         
-$name2= $_REQUEST['uname1'];
-$pass2= $_REQUEST['pass1'];
+$name = $_POST['uname1'] ?? '';
+$pass = $_POST['pass1'] ?? '';
 
+$stmt = mysqli_prepare($link, "SELECT password FROM register WHERE username = ?");
+mysqli_stmt_bind_param($stmt, 's', $name);
+mysqli_stmt_execute($stmt);
+$res = mysqli_stmt_get_result($stmt);
+$row = mysqli_fetch_assoc($res);
 
-$name1 = stripslashes($name2);
-$pass1= stripslashes($pass2);
-
-$name = mysqli_real_escape_string($link,$name1);
-$pass = mysqli_real_escape_string($link,$pass1);
-$encp =  sha1($pass); 
-
-
-$log = " select * from register where username='$name' and password='$encp' ";
-$log1 = mysqli_query($link,$log); 
-
-if( mysqli_fetch_assoc($log1)){ 
+if($row && password_verify($pass, $row['password'])){
     if(isset($_REQUEST['rem'])){
         setcookie("username", $name , time()+60*60*24 , '/' , 'localhost');
     }
     $_SESSION['login'] = true;
     $_SESSION['uname']=$name;
 
-    $query3 = "CREATE TABLE IF NOT EXISTS " . $_SESSION['uname'] . "( product_id VARCHAR(100) NOT NULL , name VARCHAR(100) NOT NULL , price INT(100) NOT NULL , quantity INT(100) NOT NULL , PRIMARY KEY (product_id)) ENGINE = InnoDB";
-    $result3 = mysqli_query($link,$query3); 
+    $tableName = preg_replace('/[^A-Za-z0-9_]/', '', $_SESSION['uname']);
+    $query3 = "CREATE TABLE IF NOT EXISTS `" . $tableName . "`( product_id VARCHAR(100) NOT NULL , name VARCHAR(100) NOT NULL , price INT(100) NOT NULL , quantity INT(100) NOT NULL , PRIMARY KEY (product_id)) ENGINE = InnoDB";
+    mysqli_query($link,$query3);
 
     echo "
             <script>

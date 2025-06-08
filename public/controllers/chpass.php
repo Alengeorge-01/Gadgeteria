@@ -1,18 +1,21 @@
 <?php 
 	require_once('connect.php');
-    $name = $_REQUEST["uname2"]; 
-	$newpwd = $_REQUEST["pass2"]; 
-	$mail= $_REQUEST["email2"];
-	 $enpwd =  sha1( $newpwd );
-	 $query = "select * from register where username = '$name' and email='$mail'"; 
-        $result = mysqli_query( $link, $query ) or die( mysqli_error($link) );
-	 if(mysqli_num_rows($result) == 1){ 
-	  	$update = " update register set password = '$enpwd' WHERE username = '$name'";
-               mysqli_query( $link, $update ) or die( mysqli_error($link) );
-        echo "
-            <script>
-                window.location='index.php';
-                alert('Password has been updated successfully');
-            </script>" ;
-	}  
+    $name   = $_POST["uname2"] ?? '';
+    $newpwd = $_POST["pass2"] ?? '';
+    $mail   = $_POST["email2"] ?? '';
+    $hash   = password_hash($newpwd, PASSWORD_DEFAULT);
+    $query = mysqli_prepare($link, "SELECT 1 FROM register WHERE username = ? AND email = ?");
+    mysqli_stmt_bind_param($query, 'ss', $name, $mail);
+    mysqli_stmt_execute($query);
+    mysqli_stmt_store_result($query);
+    if(mysqli_stmt_num_rows($query) == 1){
+            $update = mysqli_prepare($link, "UPDATE register SET password = ? WHERE username = ?");
+            mysqli_stmt_bind_param($update, 'ss', $hash, $name);
+            mysqli_stmt_execute($update);
+            echo "
+                <script>
+                    window.location='index.php';
+                    alert('Password has been updated successfully');
+                </script>" ;
+        }
 ?>

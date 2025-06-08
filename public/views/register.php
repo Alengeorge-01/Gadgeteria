@@ -2,36 +2,37 @@
 		
 		require_once('connect.php');
 
-		$name= $_REQUEST['uname'];
-		$emad= $_REQUEST['ead'];
-		$pass= $_REQUEST['pass'];
-		$repass= $_REQUEST['repass'];
-		$encp =  sha1($pass); 
-		$encrep =  sha1($repass); 
+                $name   = $_POST['uname'] ?? '';
+                $emad   = $_POST['ead'] ?? '';
+                $pass   = $_POST['pass'] ?? '';
+                $repass = $_POST['repass'] ?? '';
 
+                $stmt = mysqli_prepare($link, "SELECT 1 FROM register WHERE username = ?");
+                mysqli_stmt_bind_param($stmt, 's', $name);
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_store_result($stmt);
 
-		$dup = "select * from register where username ='$name'";
-		$dup1 = mysqli_query($link,$dup); 
-
-		if( mysqli_num_rows($dup1) >=1)  { 
-		    echo "<script> alert('User name is already exists.');
+                if(mysqli_stmt_num_rows($stmt) >= 1) {
+                    echo "<script> alert('User name is already exists.');
                 window.location='signup.php';
-             </script>";  
+             </script>";
 
-		}  
-	    else { 
-            if($encp==$encrep){
-		        $query = "insert into register values ('$name','$encp','$emad')";
-				$result = mysqli_query($link,$query);
+                }
+            else {
+                if($pass === $repass){
+                        $hashed = password_hash($pass, PASSWORD_DEFAULT);
+                        $insert = mysqli_prepare($link, "INSERT INTO register (username, password, email) VALUES (?, ?, ?)");
+                        mysqli_stmt_bind_param($insert, 'sss', $name, $hashed, $emad);
+                        mysqli_stmt_execute($insert);
                 echo "<script>
                     window.location='login.php';
                 </script>";
-            }
-            else{
-                echo "<script>
-                        alert('Password not match');
-                        window.location='signup.php';
-                    </script>";
                 }
+                else{
+                    echo "<script>
+                            alert('Password not match');
+                            window.location='signup.php';
+                        </script>";
+                    }
             }
 		?>
