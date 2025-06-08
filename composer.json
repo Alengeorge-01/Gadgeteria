@@ -6,7 +6,13 @@
         "vlucas/phpdotenv": "^5.5",
         "ext-mysqli": "*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
     "autoload": {
         "classmap": ["public/controllers/"]
+    },
+    "scripts": {
+        "test-php": "phpunit"
     }
 }
