@@ -34,11 +34,11 @@
                 </script>";
             }
             else if($table=='laptop'){
-		        $query1 = "update mobile set lname='$name' where product_id='$productid' ";
-                $query2 = "update mobile set image='$image' where product_id='$productid' ";
-                $query3 = "update mobile set size='$si' where product_id='$productid' ";
-                $query4 = "update mobile set description='$description' where product_id='$productid' ";
-                $query5 = "update mobile set price=$price where product_id='$productid' ";
+		        $query1 = "update laptop set lname='$name' where product_id='$productid' ";
+                $query2 = "update laptop set image='$image' where product_id='$productid' ";
+                $query3 = "update laptop set size='$si' where product_id='$productid' ";
+                $query4 = "update laptop set description='$description' where product_id='$productid' ";
+                $query5 = "update laptop set price=$price where product_id='$productid' ";
                 $result1 = mysqli_query($link,$query1);
                 $result2 = mysqli_query($link,$query2);
                 $result3 = mysqli_query($link,$query3);
@@ -49,11 +49,11 @@
                 </script>";
             }
             else if($table=='watch'){
-		        $query1 = "update mobile set wname='$name' where product_id='$productid' ";
-                $query2 = "update mobile set image='$image' where product_id='$productid' ";
-                $query3 = "update mobile set size='$si' where product_id='$productid' ";
-                $query4 = "update mobile set description='$description' where product_id='$productid' ";
-                $query5 = "update mobile set price=$price where product_id='$productid' ";
+		        $query1 = "update watch set wname='$name' where product_id='$productid' ";
+                $query2 = "update watch set image='$image' where product_id='$productid' ";
+                $query3 = "update watch set size='$si' where product_id='$productid' ";
+                $query4 = "update watch set description='$description' where product_id='$productid' ";
+                $query5 = "update watch set price=$price where product_id='$productid' ";
                 $result1 = mysqli_query($link,$query1);
                 $result2 = mysqli_query($link,$query2);
                 $result3 = mysqli_query($link,$query3);
@@ -64,11 +64,11 @@
                 </script>";
             }
             else if($table=='television'){
-		        $query1 = "update mobile set tname='$name' where product_id='$productid' ";
-                $query2 = "update mobile set image='$image' where product_id='$productid' ";
-                $query3 = "update mobile set size='$si' where product_id='$productid' ";
-                $query4 = "update mobile set description='$description' where product_id='$productid' ";
-                $query5 = "update mobile set price=$price where product_id='$productid' ";
+		        $query1 = "update television set tname='$name' where product_id='$productid' ";
+                $query2 = "update television set image='$image' where product_id='$productid' ";
+                $query3 = "update television set size='$si' where product_id='$productid' ";
+                $query4 = "update television set description='$description' where product_id='$productid' ";
+                $query5 = "update television set price=$price where product_id='$productid' ";
                 $result1 = mysqli_query($link,$query1);
                 $result2 = mysqli_query($link,$query2);
                 $result3 = mysqli_query($link,$query3);
